@@ -24,7 +24,7 @@ cv["skills"] = []
 
 # enumerate() - returns an Enumerate Object
 for i, skill in enumerate(skills,1):
-  print(i, '. ' + skill, sep='')
+  print(i, '- ' + skill, sep='')
 
 s1 = int(input("choose a skill from above: "))
 s2 = int(input("choose another skill from above: "))
