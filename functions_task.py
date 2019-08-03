@@ -11,18 +11,21 @@ from datetime import date
 today = date.today()
 
 def check_birthdate(year,month,day):
-  if(year >= today.year and month >= today.month and day > today.day):
-    print("This birthdate is invalid! Try another.")
+  if(year >= today.year and month > today.month):
+    print("This birthdate is from the future! Try another.")
   else:
     return calculate_age(year,month,day)
 
 
 def calculate_age(year,month,day):
-    
-    day = day - today.day
-    month = today.month - month 
-    year = today.year - year
-    print("You are " + str(year) +" years, " + str(month) + " months, and " + str(day) + " days")
+	if (month <= 12) and (day <= 31):
+		day = abs(today.day - day)
+		month = abs(today.month - month) 
+		year = abs(today.year - year)
+		print("You are " + str(year) +" years, " + str(month) + " months, and " + str(day) + " days")
+	else:
+		print("This birthdate is invalid! Try another.")
+
 
 
 year = int(input("Enter year of birth: "))
