@@ -11,7 +11,7 @@ from datetime import date
 today = date.today()
 
 def check_birthdate(year,month,day):
-  if(year >= today.year and month > today.month):
+  if(year >= today.year and month >= today.month and day > today.day):
     print("This birthdate is from the future! Try another.")
   else:
     return calculate_age(year,month,day)
