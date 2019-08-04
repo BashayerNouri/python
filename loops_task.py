@@ -5,8 +5,10 @@
  # This is a system to assist a cashier, where the cashier has to enter the items bought,
  #               and at the end a receipt will be printed.
 
+ # Edited: the total calculation
 
-cashier = {'items' : []}
+
+items = []
 
 
 while True:
@@ -14,22 +16,23 @@ while True:
 	if(name != "done"):
 		price = float(input("price: "))
 		quantity = int(input("quantity: "))
-		total = price * quantity
-		cashier["items"].append({"name": name, "price": price, "quantity" : quantity, "total" : total})
+		total_price = price * quantity
+		items.append({"name": name, "price": total_price, "quantity" : quantity})
 
 
 	else:
 		print("-------------------")
 		print("receipt")
 		print("-------------------")
-		for values in cashier["items"]:
 
-			print(values["quantity"], values["name"],'{:{width}.{prec}f}'.format(values["total"], width=5, prec=3),"KD")
+		total = 0
+		for item in items:
+
+			print (item["quantity"],item["name"], str('{:0.3f}'.format(item["price"])) + "KD")	
+			total += item["price"]
 
 		print("-------------------")
-
-		# wrong calculation output if more than one item
-		print("total:",'{:{width}.{prec}f}'.format(sum(values['total'] for item in cashier['items']), width=5, prec=3), "KD") 
+		print("total:", str('{:0.3f}'.format(total))  + "KD")
 		break
-	
 
+		
